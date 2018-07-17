@@ -1,6 +1,7 @@
 package controller;
 
 import org.joda.time.LocalDate;
+import service.StorageService;
 
 import java.io.Serializable;
 
@@ -16,6 +17,14 @@ public class Client implements Serializable {
     private LocalDate dataAtualizacao;
     private boolean loaded;
 
+    public boolean needConfiguration(){
+        try {
+            new StorageService(this).listObjects(getBucket());
+            return false;
+        }catch (Exception e){
+            return true;
+        }
+    }
 
     public LocalDate getDataAtualizacao() {
         return dataAtualizacao;

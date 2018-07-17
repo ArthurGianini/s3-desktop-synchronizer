@@ -1,6 +1,8 @@
 package view;
 
+import com.sun.org.apache.bcel.internal.generic.FADD;
 import controller.Client;
+import controller.SyncController;
 
 import java.awt.*;
 
@@ -10,8 +12,16 @@ public class Principal {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
+                    Client client = ClientHelper.carregaClient();
                     MainView frame = new MainView(getClient());
-                    frame.setVisible(true);
+                    if (client.needConfiguration()) {
+                        frame.setVisible(true);
+                    }else{
+                        frame.setVisible(false);
+                        SyncController sc = new SyncController(client, frame);
+                        Thread t = new Thread(sc);
+                        t.start();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

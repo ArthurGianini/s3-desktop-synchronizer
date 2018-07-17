@@ -224,7 +224,7 @@ public class MainView extends JFrame {
         if (res) {
             panelInicio.setVisible(true);
             panelLoader.setVisible(false);
-            JOptionPane.showMessageDialog(null, SYNC_END, RESULT, JOptionPane.INFORMATION_MESSAGE);
+//            JOptionPane.showMessageDialog(null, SYNC_END, RESULT, JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(frame, SYNC_ERROR, RESULT, JOptionPane.ERROR_MESSAGE);
             panelInicio.setVisible(true);

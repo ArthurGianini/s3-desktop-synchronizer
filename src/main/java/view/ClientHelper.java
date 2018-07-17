@@ -31,7 +31,6 @@ public class ClientHelper {
             if (cli.getDataAtualizacao() == null)
                 cli.setDataAtualizacao(LocalDate.now().minusDays(90));
         } catch (IOException e) {
-            System.err.println(e.getMessage());
             cli = new Client();
             cli.setDataAtualizacao(LocalDate.now().minusDays(7));
         }
